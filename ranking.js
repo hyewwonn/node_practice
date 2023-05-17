@@ -12,7 +12,7 @@ let db = new sqlite3.Database('./db/chinook.db', (err) => {
 db.run('CREATE TABLE IF NOT EXISTS ranking(name text not null, score inreger not null)');
 
 function select() {
-    let sql = `SELECT * FROM ranking`;
+    let sql = `SELECT * FROM ranking ORDER BY score desc`;
 
     db.all(sql, [], (err, rows) => {
         if(err) {
@@ -26,7 +26,7 @@ function select() {
     db.close();
 }
 
-db.run(`INSERT INTO ranking(name, score) VALUES('성재', 502)`, function(err) {
+db.run(`INSERT INTO ranking(name, score) VALUES('삼이', 32)`, function(err) {
     if(err) {
         return console.log(err.message);
     }
